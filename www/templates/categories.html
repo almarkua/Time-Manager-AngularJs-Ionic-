@@ -1,0 +1,28 @@
+<div ng-controller="CategoriesCtrl">
+	<ion-header-bar class="bar-positive">
+		<button class="button button-icon" ng-click="toggleMenu()">
+	    	<i class="icon ion-navicon"></i>
+	    </button>
+	    <h1 class="title">Categories</h1>
+	    <div class="buttons">
+		    <button class="button button-icon" ng-click="showNewCategory()">
+		    	<i class="icon ion-plus"></i>
+		    </button>
+	    </div>
+	</ion-header-bar>
+	<ion-content scroll="true">
+	    <ion-list>
+		    <ion-item ng-repeat="category in categories" class="no-padding my-card">
+		    	<div class="row">
+			    	<div class="col col-90">
+				    	<h3>{{category.name}}</h3>
+				    	<p>{{category.description}}</p>
+			    	</div>
+			    	<div class="col text-center">
+			    		<i class="icon ion-trash-a icon-36" ng-click="deleteCategory($index)"></i>
+			    	</div>
+		    	</div>
+	        </ion-item>
+	    </ion-list>
+	</ion-content>
+</div>

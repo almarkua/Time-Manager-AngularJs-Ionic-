@@ -1,0 +1,18 @@
+<div class="modal">
+  <ion-header-bar class="bar-positive">
+    <h1 class="title">{{selectHeader}}</h1>
+  </ion-header-bar>
+  <ion-content scroll="true">
+    <ion-list>
+	    <ion-item class="no-padding" ng-repeat="item in items" ng-click="selectItem($index)">
+	    	<div class="row">
+		    	<div class="col col-90">
+		    		<h2>{{item.value}}</h2>
+		    	</div>
+		    	<div class="col" class="no-padding" ng-show="item.checked">
+		    		<i class="icon ion-checkmark"></i>
+		    	</div>
+	    	</div>
+        </ion-item>
+    </ion-list>
+</div>

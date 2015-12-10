@@ -1,0 +1,46 @@
+<div class="modal">
+  <ion-header-bar class="bar-positive">
+    <div class="buttons">
+      <button class="button button-icon" ng-click="closeNewTask()">
+        <i class="icon ion-chevron-left"></i>
+      </button>
+    </div>
+    <h1 class="title">New task</h1>
+    
+  </ion-header-bar>
+
+  <ion-content>
+    <form name="newTaskForm" ng-submit="createNewTask(newTask)">
+      <label class="item item-input">
+        <input type="text" name="shortDescription" placeholder="Short description" ng-model="newTask.shortDescription" ng-minlength="5" required>
+      </label>
+       <label class="item item-input">
+        <input type="text" name="description" placeholder="Description" ng-model="newTask.description" ng-minlength="5" required>
+      </label>
+      <label class="item item-checkbox item-input-custom custom-input-label">
+        <label class="checkbox ">
+          <input type="checkbox" ng-model="newTask.isStarted">
+        </label>
+        Start task right now
+      </label>
+      <label class="item item-input" placeholder="Category" ng-click="selectCategory()">
+        <span class="input-label custom-input-label">Category: </span>
+        {{categories[selectedCategoryIndex].name}}
+      </label>
+      <label class="item item-input" ng-click="selectPriority()">
+        <span class="input-label custom-input-label">Priority: </span>
+        {{newTask.priority}}
+      </label>
+
+      <div class="padding">
+            <p class="error-msg" ng-show="newTaskForm.shortDescription.$error.required" ng-hide="!newTaskForm.shortDescription.$error.dirty">* Short description is required</p>
+            <p class="error-msg" ng-show="newTaskForm.shortDescription.$error.minlength">* Short description must be longer than 5 characters</p>
+            <p class="error-msg" ng-show="newTaskForm.description.$error.required" ng-hide="!newTaskForm.description.$error.dirty">* Description is required</p>
+            <p class="error-msg" ng-show="newTaskForm.description.$error.minlength">* Description must be longer than 6 characters</p>
+        </div>
+      <div class="padding">
+        <button type="submit" class="button button-block button-calm" ng-click="newTaskForm.showError = true;">Create</button>
+      </div>
+    </form>
+  </ion-content>
+</div>

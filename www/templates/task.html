@@ -1,0 +1,41 @@
+<div class="modal">
+  <ion-header-bar class="bar-positive">
+    <div class="buttons">
+
+      <button class="button button-icon" ng-click="closeTask()">
+        <i class="icon ion-chevron-left"></i>
+      </button>
+    </div>
+    <h1 class="title">{{currentTask.shortDescription}}</h1>
+    <div class="buttons">
+      <button class="button button-icon" ng-click="deleteTask(currentTask)">
+        <i class="icon ion-trash-a"></i>
+      </button>
+    </div>
+  </ion-header-bar>
+
+  <ion-content>
+    <ion-list>
+      <ion-item>
+        <h2>Short description:</h2>
+        <p>{{currentTask.shortDescription}}</p>
+      </ion-item>
+      <ion-item>
+        <h2>Descripton:</h2>
+        <p>{{currentTask.description}}</p>
+      </ion-item>
+      <ion-item>
+        <h2>Spended time:</h2>
+        <p>{{currentTask.spendedTime.hours}} h. {{currentTask.spendedTime.minutes}} m. {{currentTask.spendedTime.seconds}} s.</p>
+      </ion-item>
+      <ion-item>
+        <h2>Category:</h2>
+        <p>{{currentTask.category.name}}</p>
+      </ion-item>
+      <ion-item>
+        <h2>Priority:</h2>
+        <p>{{currentTask.priority}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</div>

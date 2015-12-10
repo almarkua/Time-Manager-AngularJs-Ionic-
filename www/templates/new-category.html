@@ -1,0 +1,24 @@
+<div class="modal">
+  <ion-header-bar class="bar-positive">
+    <div class="buttons">
+      <button class="button button-icon" ng-click="closeNewCategory()">
+        <i class="icon ion-chevron-left"></i>
+      </button>
+    </div>
+    <h1 class="title">New category</h1>
+  </ion-header-bar>
+
+  <ion-content>
+    <form ng-submit="createNewCategory(newCategory)">
+      <label class="item item-input">
+        <input type="text" placeholder="Enter category name" ng-model="newCategory.name">
+      </label>
+       <label class="item item-input">
+        <input type="text" placeholder="Enter category description" ng-model="newCategory.description">
+      </label>
+      <div class="padding">
+        <button type="submit" class="button button-block button-positive">Create</button>
+      </div>
+    </form>
+  </ion-content>
+</div>

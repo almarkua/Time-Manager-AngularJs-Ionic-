@@ -1,0 +1,17 @@
+<ion-header-bar class="bar-positive">
+	<button class="button button-icon" ng-click="toggleMenu()">
+    	<i class="icon ion-navicon"></i>
+    </button>
+    <h1 class="title">Statistic</h1>
+</ion-header-bar>
+<ion-content scroll="true" ng-controller="StatisticCtrl" ng-init="init()">
+	<div id="filter-bar">
+	  	<div class="button-bar">
+	      <a class="button" ng-class="activeFilters.byCategories ? 'active-filter' : ''" ng-click="setByCategories(true)">By categories</a>
+	      <a class="button" ng-class="activeFilters.byPriorities ? 'active-filter' : ''"ng-click="setByCategories(false)">By priorities</a>
+	    </div>
+    </div>
+	 <canvas id="doughnut" class="chart chart-doughnut"
+		 chart-data="data" chart-labels="labels" chart-legend="true">
+	</canvas> 
+</ion-content>

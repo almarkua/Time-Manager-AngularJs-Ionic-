@@ -1,0 +1,63 @@
+<div ng-controller="TasksCtrl" ng-init="init()">
+	<ion-header-bar class="bar-positive">
+		<div class="buttons">
+			<button class="button button-icon" ng-click="toggleMenu()">
+		    	<i class="icon ion-navicon"></i>
+		    </button>
+		</div>
+	    <h1 class="title">Tasks</h1>
+	    <div class="buttons">
+			<button class="button button-icon" ng-click="showSearch()">
+		    	<i class="icon ion-android-search"></i>
+		    </button>
+		    <button class="button button-icon" ng-click="showFilters()">
+		    	<i class="icon ion-funnel"></i>
+		    </button>
+		    <button class="button button-icon" ng-click="showNewTask()">
+		    	<i class="icon ion-plus"></i>
+		    </button>
+	    </div>
+	    
+	</ion-header-bar>
+	<ion-content scroll="true" class="content">
+		
+	  	<div id="filter-bar">
+		  	<div class="button-bar">
+		      <a class="button" ng-class="activeFilters.all ? 'active-filter' : ''" ng-click="setFilterDate('all')">All</a>
+		      <a class="button" ng-class="activeFilters.today ? 'active-filter' : ''"ng-click="setFilterDate('today')">Today</a>
+		    </div>
+	    </div>
+
+	    <div id="search-bar" ng-show="isSearchActive">
+		    <div class="item item-input-inset">
+		      <label class="item-input-wrapper" id="search-input">
+		        <i class="icon ion-search placeholder-icon"></i>
+		        <input type="text" placeholder="Search" ng-model="searchQuery.text">
+		      </label>
+		    </div>
+	  	</div>
+
+	    <ion-list>
+		    <ion-item class="no-padding my-card" ng-repeat="task in tasks | filter : search | filter : filters"
+		    		ng-class="task.priority == 1 ? 'priority-1':
+		    				(task.priority == 2 ? 'priority-2' : 
+		    				(task.priority == 3 ? 'priority-3' : 
+		    				(task.priority == 4 ? 'priority-4' : 'priority-5')))">
+		    	<div class="row row-center row-task">
+		    		<div class="col col-80" ng-click="showTask(task)">
+						<h2>{{task.shortDescription}}</h2>
+						<span class="date">{{task.date}}</span>
+			    		<p>{{task.description}}</p>		    		
+		    		</div>
+		    		<div class="col col-20 text-center col-center">
+		    			<i class="icon ion-play icon-36" ng-show="task.isPaused || !task.isStarted && !task.isDone" ng-click="startTask($index)"></i>
+		    			<i class="icon ion-pause icon-36" ng-show="task.isStarted && !task.isPaused && !task.isDone" ng-click="pauseTask($index)"></i>
+		    			<i class="icon ion-stop icon-36" ng-show="task.isStarted && !task.isPaused" ng-hide="task.isDone" ng-click="doTask($index)"></i>
+		    			<i class="icon ion-android-checkbox-outline icon-36" ng-show="task.isDone"></i>
+		    			
+		    		</div>
+		    	</div>
+	        </ion-item>
+	    </ion-list>
+	</ion-content>
+</div>

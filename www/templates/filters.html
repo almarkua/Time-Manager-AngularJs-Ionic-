@@ -1,0 +1,42 @@
+<div class="modal">
+  <ion-header-bar class="bar-positive">
+    <div class="buttons">
+      <button class="button button-icon" ng-click="applyFilters()">
+        <i class="icon ion-chevron-left"></i>
+      </button>
+    </div>
+    <h1 class="title">Filters</h1>
+    <div class="buttons">
+      <button class="button button-icon" ng-click="setSpecificFilterDate()">
+        <i class="icon ion-checkmark"></i>
+      </button>
+    </div>
+  </ion-header-bar>
+
+  <ion-content>
+    <form ng-submit="setSpecificFilterDate()"/>
+      <label class="item item-toggle">
+        Done tasks
+        <label class="toggle toggle-positive">
+          <input type="checkbox" ng-model="doneFilters.done" ng-click="updateDoneFilters()">
+            <div class="track">
+              <div class="handle"></div>
+            </div>
+        </label>
+      </label>
+      <label class="item item-toggle">
+        Undone tasks
+        <label class="toggle toggle-positive">
+          <input type="checkbox" ng-model="doneFilters.undone" ng-click="updateDoneFilters()">
+            <div class="track">
+              <div class="handle"></div>
+            </div>
+        </label>
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Custom date: </span>
+        <input type="date" ng-model="specificFilter.date" ng-change="setSpecificFilterDate()">
+      </label>
+    </form>
+  </ion-content>
+</div>
